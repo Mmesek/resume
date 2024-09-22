@@ -1,0 +1,47 @@
+- name: Twitch Channel
+  role: Streamer
+  date: 2023/8
+- name: Discord Server(s)
+  role: Community Administrator & Event Coordinator
+  date: 2018 - Present
+  keys:
+  - Hosted over 14 events with 8 unique minigames \tag{Event Coordination}
+  - Developed Modmail Bot \tag{Programming}
+  - Improved Quality of Life for moderators \tag{Programming}
+      - Streamlined moderation actions
+      - Automated detection of bot accounts
+      - Improved communication with moderation team by introducing forum-based Modmail system between user direct messages and server moderation team's thread
+      - Streamlined infraction logging
+  - Automated archiving Questions & Answers into separate channel \tag{Programming}
+- name: Roleplay Discord server
+  role: Owner
+  date: 2018 - 2020
+  keys:
+  - Automated dice roll on actions-text for self-guided roleplay without Dungeon Master \tag{Programming}
+  - Created regex-based responses to common actions sprinkled with dynamic variables \tag{Programming}
+  - Automated notifications about free games *(before it was cool)* \tag{Programming}
+- name: YouTube Channel
+  role: Montage Editor
+  date: 2018/9 - 2019/8
+- name: Game Clan
+  role: Co-Creator
+  date: 2017 - 2018
+  keys:
+  - Organised weekly sparrings & get-togethers \tag{Event Coordination}
+- name: Poznań Swimming Cup
+  role: Volunteer
+  date: 2016/2/13
+  description: Mostly just running & acting as a bouncer. In fact, it was just someone's ploy to get me there
+- name: Digital Goods Trading
+  date: 2014 - Present
+- name: Medium YT Minecraft server
+  role: Technician
+  date: 2012 - 2013
+- name: Modded Minecraft servers/communities
+  role: Modpack Maker
+  date: 2011 - 2015
+  keys:
+  - Setting up & configuration
+- name: In-Game Market Price Reference Website
+  role: Manager, Editor
+  date: 2010

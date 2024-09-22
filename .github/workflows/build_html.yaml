@@ -1,0 +1,51 @@
+name: Build HTML
+
+on:
+  workflow_dispatch:
+  release:
+    types: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Markdown
+        uses: docker://python:latest
+        with:
+          args: scripts/generate.py --html
+
+      - uses: docker://pandoc/extra:latest
+        with:
+          args: >-
+            education.md
+            sections/extra.md
+            -o tmp/education.html
+
+      - uses: docker://pandoc/extra:latest
+        with:
+          args: >-
+            before.md
+            -A tmp/education.html
+            -o tmp/before.html
+            --template templates/subsections.html
+            --metadata-file meta/meta.yaml
+
+      - name: Build HTML
+        uses: docker://pandoc/extra:latest
+        with:
+          args: >-
+            main.md
+            -B tmp/before.html
+            --standalone
+            --template templates/main.html
+            --metadata-file meta/meta.yaml
+            --output output/index.html
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: output

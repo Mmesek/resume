@@ -1,0 +1,59 @@
+name: Build PDF
+
+on:
+  workflow_dispatch:
+  release:
+    types: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Markdown
+        uses: docker://python:latest
+        with:
+          args: scripts/generate.py
+
+      - uses: docker://pandoc/extra:latest
+        with:
+          args: >-
+            education.md
+            sections/extra.md
+            -o tmp/education.tex
+
+      - name: Build Tex Before Section
+        uses: docker://pandoc/extra:latest
+        with:
+          args: >-
+            before.md
+            -A tmp/education.tex
+            -o tmp/before.tex
+            --template templates/subsections.tex
+            --metadata-file meta/meta.yaml
+
+      - name: Build Tex Main
+        uses: docker://pandoc/extra:latest
+        with:
+          args: >-
+            main.md
+            -B tmp/before.tex
+            -o tmp/out.tex
+            --template templates/main.tex
+            --metadata-file meta/meta.yaml
+
+      - name: Build PDF
+        uses: docker://pandoc/extra:latest
+        with:
+          args: >-
+            tmp/out.tex
+            --interaction batchmode
+            --output output/Resume.pdf
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: resume
+          folder: output

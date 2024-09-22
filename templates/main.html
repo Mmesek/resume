@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    $if(title)$
+    <title>$title$</title>
+    $endif$
+    <meta charset="utf-8">
+    <link type="text/css" rel="stylesheet" href="style.css">
+    <link rel="icon" href="img/favicon.png">
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1" />
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/fontawesome.min.css">
+</head>
+
+<body>
+    <header class="center">${header}</header>
+    <nav>
+        $if(top_links)$
+        <hr class="blue-hr">
+        $top_links$
+        $endif$
+        $if(bottom_links)$
+        <hr class="orange-hr">
+        $bottom_links$
+        <hr class="green-hr">
+        $endif$
+    </nav>
+    <main>
+        $if(include-before)$
+        <div class="left-sidebar">
+            $if(author)$
+            <h1 class="author">$author$</h1>
+            $endif$
+            $if(description)$
+            <p>$description$</p>
+            $endif$
+            <div>
+                ${include-before}
+            </div>
+        </div>
+        <div class="vertical-hr"> </div>
+        <div class="center-bar">
+            $body$
+        </div>
+        $else$
+        <div>
+            $body$
+        </div>
+        $endif$
+    </main>
+    <nav>
+        $if(include-after)$
+        <hr class="blue-hr">
+        $include-after$
+        <hr class="green-hr">
+        $endif$
+    </nav>
+    <footer>$if(thanks)$Made by $thanks$ $endif$$if(date)$@$date$$endif$</footer>
+</body>
+
+</html>

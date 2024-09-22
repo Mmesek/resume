@@ -1,0 +1,38 @@
+- name: RSS Aggregator
+  url: https://github.com/Mmesek/RSSReader
+  description: Service for transforming & aggregating RSS feeds.
+  technologies:
+    - Python
+    - SQLAlchemy
+    - Aiohttp
+    - BeautifulSoup
+    - Webhooks
+    - Docker
+  type: Microservice
+- name: Resume Generator
+  type: Script
+  description: Templates with scripts to regenerate (this) resume as HTML & PDF from Markdown & YAML.
+  technologies:
+    - LaTeX
+    - HTML/CSS
+    - Pandoc
+- name: Items API
+  type: Database Schema
+  description: |
+    SQL Schema for storing & managing items, transactions & ownership exposing RESTful backend interface via PostgREST.
+    - Inventory based on Double-Entry Accounting
+    - Leaderboards of items
+    - Extendable at run-time with Vertical Table Attributes
+  technologies:
+    - SQL
+    - PostgreSQL
+    - PostgREST
+- name: Game Bundle Manager
+  type: Tool
+  description: Tool to keep track of remaining keys from bundles as well as their current prices with website scrapper
+  technologies:
+    - Python
+    - SQLAlchemy
+    - SQL
+    - BeautifulSoup
+    - tkinter
