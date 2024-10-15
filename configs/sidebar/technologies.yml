@@ -1,15 +1,15 @@
 - name: Spidergraph
   list:
     - name: DevOps
-      proficiency: 3
+      proficiency: 6
     - name: Linux
-      proficiency: 4
+      proficiency: 8
     - name: Cyber Security
-      proficiency: 1.5
+      proficiency: 3
     - name: Programming
-      proficiency: 5
+      proficiency: 10
     - name: Algorithms
-      proficiency: 2.5
+      proficiency: 4
 - name: Programming
   icon: \faCode
   list:
