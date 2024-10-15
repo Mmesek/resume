@@ -20,23 +20,23 @@ jobs:
       - name: Build Markdown
         run: python scripts/generate.py --html
 
+      - run: mkdir output
+
       - uses: docker://pandoc/minimal:edge
         with:
           args: >-
-            before.md
-            sidebar.md
-            -o before.html
+            output/before.md
+            output/sidebar.md
+            -o output/before.html
             --template templates/subsections.html
             --metadata-file meta/main.yaml
-
-      - run: mkdir output
 
       - name: Build HTML
         uses: docker://pandoc/minimal:edge
         with:
           args: >-
-            main.md
-            -B before.html
+            output/main.md
+            -B output/before.html
             --standalone
             --template templates/main.html
             --metadata-file meta/main.yaml
