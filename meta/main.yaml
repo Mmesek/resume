@@ -1,0 +1,23 @@
+title: Mms' Resume
+author: Mms
+lang: en-GB
+date: 2022
+thanks: Mmesek
+website: mmesek.github.io
+location: Poznań / Lublin, Poland
+timezone: CEST / UTC+2
+sidebar_footer: "*Counters represents Confidence"
+contact:
+  display: "@mmesek:matrix.org"
+  url: https://matrix.to/#/@mmesek:matrix.org
+  fa_icon: address-book
+links:
+  - display: 
+    url: https://github.com/Mmesek
+    fa_icon: github
+  - display:
+    url: https://linkedin.com/in/mmesek
+    fa_icon: linkedin
+  - display:
+    url: https://www.youtube.com/@TheMmesek
+    fa_icon: youtube

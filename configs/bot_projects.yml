@@ -1,0 +1,47 @@
+title: Related projects
+icon: \faProjectDiagram
+projects:
+  - name: Discord Bot
+    url: https://github.com/Mmesek/MBot.py
+    description: Multipurpose collection of systems written from scratch for automation & moderation of communities on Discord made using Command Framework below.
+    stats: ~19k LoC / ~780 commits
+    years: 2019 - 2023
+    technologies: 
+      - Python
+      - SQLAlchemy
+      - SQL
+      - Docker
+    type: End-user product & live service
+  - name: Command Framework
+    url: https://github.com/Mmesek/MFramework.py
+    description: Low boilerplate framework for development of bot commands & event-driven systems. Extends API Wrapper below.
+    technologies: 
+      - Python
+      - SQLAlchemy
+      - Redis
+      - i18n
+      - InfluxDB
+    type: Development Library
+    stats: ~4.8k LoC / ~400 commits
+    years: 2020 - 2023
+  - name: Discord API Wrapper
+    url: https://github.com/Mmesek/mdiscord
+    description: |
+Websocket client with event dispatcher & type validator.
+Partially generated using Code Generator below.
+    stats: ~9.2k LoC / ~140 commits
+    years: 2020 - 2021
+    technologies: 
+      - Python
+      - Aiohttp
+      - REST API
+      - WebSockets
+      - Dataclasses
+    type: API abstraction
+  - name: Code generator & Markdown Parser
+    url: https://github.com/Mmesek/DocParser
+    description: Tool for parsing markdown tables & headers into source code structures & functions.
+    stats: ~2.7k LoC / ~55 commits
+    years: 2020 - 2022
+    technologies: Python
+    type: Script

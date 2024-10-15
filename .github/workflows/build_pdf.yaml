@@ -1,0 +1,58 @@
+name: Build PDF
+
+on:
+  workflow_dispatch:
+  release:
+    types: [push]
+
+  push:
+    branches: [main, gh_pages]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - run: mkdir output
+
+      - name: Build Markdown
+        run: python scripts/generate.py
+
+      - name: Build Sidebar Section Tex file
+        uses: docker://pandoc/extra:edge-ubuntu
+        with:
+          args: >-
+            output/before.md
+            output/sidebar.md
+            -o output/before.tex
+            --template templates/subsections.tex
+            --metadata-file meta/main.yaml      
+
+      - name: Build Main Tex file
+        uses: docker://pandoc/extra:edge-ubuntu
+        with:
+          args: >-
+            output/main.md
+            -B output/before.tex
+            -o output/out.tex
+            --template templates/main.tex
+            --metadata-file meta/main.yaml
+
+      - name: Build PDF
+        uses: docker://pandoc/extra:edge-ubuntu
+        with:
+          entrypoint: sh
+          args: scripts/convert_to_pdf.sh
+
+      - run: mkdir resume && mv output/out.pdf resume/resume.pdf
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: resume
+          folder: resume

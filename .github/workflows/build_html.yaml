@@ -1,0 +1,49 @@
+name: Build HTML
+
+on:
+  workflow_dispatch:
+  release:
+    types: [push]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Markdown
+        run: python scripts/generate.py --html
+
+      - uses: docker://pandoc/minimal:edge
+        with:
+          args: >-
+            before.md
+            sidebar.md
+            -o before.html
+            --template templates/subsections.html
+            --metadata-file meta/main.yaml
+
+      - run: mkdir output
+
+      - name: Build HTML
+        uses: docker://pandoc/minimal:edge
+        with:
+          args: >-
+            main.md
+            -B before.html
+            --standalone
+            --template templates/main.html
+            --metadata-file meta/main.yaml
+            --output output/index.html
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: output

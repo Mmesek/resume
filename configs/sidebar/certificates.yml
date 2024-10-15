@@ -1,0 +1,79 @@
+- organisation: TDX Arena
+  certificates:
+    - name: Penetration Tester
+      default: True
+      date: 2023
+      categories:
+        - Cyber Security
+        - Penetration Testing
+        - Web Pentesting
+- organisation: TryHackMe
+  certificates:
+    - name: Advent of Cyber
+      date: 2022
+      categories:
+        - Cyber Security
+    - name: Jr Pentration Tester
+      default: True
+      date: 2022
+      id: THM-D30FJKWDEQ
+      url: https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-D3OFJKWDEQ.png
+      categories:
+        - Cyber Security
+        - Penetration Testing
+    - name: Web Fundamentals
+      date: 2022
+      id: THM-UGOU31UVX1
+      url: https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-UGOU31UVX1.png
+      categories:
+        - Cyber Security
+        - Penetration Testing
+        - Web Pentesting
+    - name: CompTIA Pentest+ 
+      default: True
+      date: 2022
+      id: THM-CDELIDINP
+      url: https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-CDELIDINJ9.png
+      categories:
+        - Cyber Security
+        - Penetration Testing
+    - name: Pre Security 
+      date: 2022
+      id: THM-UVQ9CUCAQU
+      url: https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-UVQ9CUCAQU.png
+      categories:
+        - Cyber Security
+    - name: Introduction to CyberSecurity
+      date: 2022
+      id: THM-VDPRCJH4HD
+      url: https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-VDPRCJH4HD.png
+      categories:
+        - Cyber Security
+- organisation: Sekurak
+  certificates:
+    - name: Web App Hacking
+      date: 2022
+      categories:
+        - Cyber Security
+        - Penetration Testing
+        - Web Pentesting
+    - name: "OSINT/OPSEC: Disinformation analysis"
+      date: 2022
+- organisation: HackerRank
+  certificates:
+    - name: Basic Python
+      default: True
+      date: 2022
+      id: aae0d3fb3e1a
+      url: https://www.hackerrank.com/certificates/aae0d3fb3e1a
+      categories:
+        - Programming
+        - Python
+- organisation: FreeCodeCamp
+  certificates:
+    - name: Scientific Computing with Python
+      default: True
+      date: 2022
+      categories:
+        - Programming
+        - Python

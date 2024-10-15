@@ -1,0 +1,314 @@
+\batchmode
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+%\usepackage{geometry}
+%\RequirePackage[sfdefault]{ClearSans}
+\usepackage{xurl}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{lmodern}
+%\usepackage{mathptmx}
+\usepackage[a4paper, margin=0.3cm, nohead, nofoot, asymmetric, nomarginpar]{geometry}
+%\usepackage[margin=0.75cm]{geometry}
+%\usepackage{xstring, xifthen}
+\usepackage[default]{sourcesanspro}
+%\usepackage{moresize}
+%\usepackage[sfdefault]{latex/roboto}
+%\usepackage{fontspec}
+%\newfontfamily{\defaultfont}{SourceSansPro}
+%\setsansfont{Deja vu Sans}
+%\sourcesansprolight
+%\setmainfont{SourceSansPro}
+\usepackage[compact]{titlesec}
+\usepackage{fontawesome5}
+\usepackage{colortbl}
+\pagestyle{empty}
+
+\AtBeginDocument{%                     % this will reduce spaces between parts (above and below) of texts within a (sub)section to 0pt, for example - like between an 'eqnarray' and text
+  \setlength\abovedisplayskip{0pt}
+  \setlength\belowdisplayskip{0pt}
+}
+
+\usepackage{enumitem}
+\setlist{nolistsep}
+
+% use to vertically center content
+\newcommand*{\vcenteredhbox}[1]{
+    \begingroup
+    \setbox0=\hbox{#1}
+    \parbox{\wd0}{\box0}
+    \endgroup
+}
+%\usepackage{vwcol}
+\usepackage{multicol}
+\usepackage{color}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes}
+
+\definecolor{white}{RGB}{255,255,255}
+\definecolor{darkblue}{HTML}{2a5d87}
+\definecolor{maingray}{HTML}{B9B9B9}
+
+\newcommand{\meter}[1]{ 
+    \begin{tikzpicture}
+        \foreach [count=\i] \y in {#1}{
+            \draw[fill=maingray,maingray](0,\i) rectangle (1,\i+0.25);
+            \draw[fill=darkblue,darkblue](0,\i) rectangle (\y,\i+0.25);
+        }
+    \end{tikzpicture}
+}
+
+\newcommand{\cloudtag}[1]{%
+  \tikz[baseline]\node[anchor=base,draw=body!30,rounded corners,inner xsep=.75ex,inner ysep =0.25ex,text height=1.5ex,text depth=.25ex]{#1};
+}
+
+\newcommand{\tag}[1]{%
+  \hfill\tikz[baseline]\node[anchor=base,draw=body!30,rounded corners,inner xsep=.3ex,inner ysep =0.1ex,text height=1.35ex,text depth=.5ex]{\small\bfseries\textit{#1}};
+}
+
+\newcommand{\inlinetag}[1]{%
+  \tikz[baseline]\node[anchor=base,draw=body!20,rounded corners,inner xsep=.5ex,inner ysep =0.25ex,text height=1.5ex,text depth=.25ex]{#1};
+}
+
+\newcommand{\tagline}[1]{
+  {\small{\bfseries{\textit{#1}}}}
+}
+
+\defaultfontfeatures{Ligatures=TeX}
+
+\setlength{\columnseprule}{1pt}
+\def\columnseprulecolor{\color{RoyalBlue}}
+%\renewcommand{\familydefault}{\ptm}
+\setcounter{secnumdepth}{0}
+\thispagestyle{empty}
+
+%\geometry{top=1cm, bottom=1cm, left=1cm, right=1cm}
+\setlength{\parindent}{0mm}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=blue,
+    pdftitle={$author$ Resume},
+    pdfpagemode=UseNone,
+    urlbordercolor=black,
+    pdfborderstyle={/S/U/W 1}
+}
+
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+%\let\tempone\itemize
+%\let\temptwo\enditemize
+%\renewenvironment{itemize}{\tempone\addtolength{\itemsep}{0.1\baselineskip}}{\temptwo}
+\let\OLDitemize\itemize
+%\renewcommand\itemize{
+  %\OLDitemize
+%  \setlength{\leftmargin}{0.10cm}
+%  \setlength{\itemindent}{1em}
+%}
+%\renewcommand\itemize{\OLDitemize\addtolength{\itemsep}{100pt}}
+%\setlist{topsep=0pt}
+
+% \let\origsection\section
+% \renewcommand\section{\@ifstar{\starsection}{\nostarsection}}
+% 
+% \newcommand\nostarsection[1]
+% {\sectionprelude\origsection{#1}\sectionpostlude}
+% 
+% \newcommand\starsection[1]
+% {\sectionprelude\origsection*{#1}\sectionpostlude}
+% 
+% \newcommand\sectionprelude{%
+%   \vspace{1.1em}
+% }
+% 
+% \newcommand\sectionpostlude{%
+%   \vspace{1.1em}
+% }
+
+\newcommand{\D}{5} % number of dimensions (config option)
+\newcommand{\U}{10}
+
+\newdimen\R % maximal diagram radius (config option)
+\R=1.2cm
+\newdimen\L % radius to put dimension labels (config option)
+\L=1.5cm
+
+\newcommand{\spidergraph}[1]{
+  \newcommand{\A}{360/\D} % calculated angle between dimension axes
+
+  %\begin{figure}[htbp]
+    %\centering
+  \begin{tikzpicture}[scale=1]
+    \path (0:0cm) coordinate (O); % define coordinate for origin
+
+    % draw the spiderweb
+    %\foreach \X in {1,...,\D}{
+    %  \draw (\X*\A:0) -- (\X*\A:\R);
+    %}
+    \foreach \Y in {0,...,\U}{
+      \foreach \X in {1,...,\D}{
+        \path (\X*\A:\Y*\R/\U) coordinate (D\X-\Y);
+        \fill (D\X-\Y) circle (0.5pt);
+      }
+      \draw [opacity=0.1] (0:\Y*\R/\U) \foreach \X in {1,...,\D}{
+          -- (\X*\A:\Y*\R/\U)
+      } -- cycle;
+    }
+    \foreach [count=\i] \e \v in {#1}{
+      \path (\i*\A-10:\L) node (L\i) {\footnotesize \e};
+    }
+    \draw [fill=darkblue, opacity=0.5] \foreach [count=\i] \e \v in {#1}{
+        -- (D\i-\v) 
+    } -- cycle;
+  
+  \end{tikzpicture}
+  %\end{figure}
+}
+
+\begin{document}
+%\begin{vwcol}[widths={0.3,0.7}, sep=0.8cm, justify=flush,rule=0pt,indent=1em]
+$if(include-before)$
+\begin{minipage}[t]{0.27\textwidth}
+  $if(author)$
+  {\huge $author$}\hfill
+  $endif$
+
+  \raggedleft
+
+  $if(ats_fix)${\hfill\tiny $ats_fix$}$endif$
+
+  $if(email)$
+  %\fontsize{7pt}{8pt}\selectfont
+  {\small \href{mailto:$email$}{$email$} \faIcon{envelope}}
+  $endif$
+
+  
+  $if(contact)${\scriptsize \faIcon{$contact.fa_icon$} \href{$contact.url$}{$contact.display$} \hfill}$endif$
+  $if(phone)${\small $phone$ \faIcon{phone}}$endif$
+
+  $if(timezone)${\footnotesize \faIcon[regular]{clock} $timezone$ \hfill}$endif$
+  $if(location)${\footnotesize $location$ \faIcon{map-marker-alt}}$endif$
+
+  Clickable links: $for(links)${\normalsize \href{$it.url$}{$it.display$ \faIcon{$it.fa_icon$}}} $endfor$
+
+  $if(description)$
+  {\raggedright $description$}\raggedright
+  $endif$
+
+%\bigskip
+\vspace{4pt}
+
+  %\renewenvironment{itemize}
+  %{\begin{list}
+%  \setlength{\leftmargin}{0.1cm}
+%}
+%{\end{list}}
+%\fontsize{10pt}{12pt}\selectfont
+\titleformat{\section}
+{\Large\raggedleft\bfseries}
+{}
+{0em}
+{\underline} % Text formatting of sections
+
+\titleformat{\subsection}
+{\large\raggedleft\bfseries}
+{}
+{0em}
+{\underline} % Text formatting of sections
+
+\titleformat{\subsubsection}
+{\normalsize\raggedleft\bfseries}
+{}
+{0em}
+{} % Text formatting of sections
+
+\titlespacing{\subsubsection}{0pt}{3pt}{0pt} % this reduces space between (sub)sections to 0pt, for example
+\titlespacing{\subsection}{3pt}{5pt}{2pt} % this reduces space between (sub)sections to 0pt, for example
+\titlespacing{\section}{0pt}{7pt}{0pt} % this reduces space between (sub)sections to 0pt, for example
+
+\renewcommand\itemize{\itemsep{}\raggedleft{}}{}%
+
+%\renewcommand\itemize{{\itemsep}{}\raggedleft}%
+
+$include-before$
+
+\end{minipage} % Don't use empty lines after \end and the next \begin{minipage}.
+\hfill\vline\hfill
+\hspace{0.03\textwidth}$endif$
+%\columnbreak
+\begin{minipage}[t]{0.69\textwidth}
+%\fontsize{11pt}{13.2pt}\selectfont
+\fontsize{12pt}{14pt}\selectfont
+%\renewcommand\itemize{\OLDitemize{\itemsep}{}\raggedright}%
+
+\titleformat{\section}
+{\LARGE\center\bfseries}
+{}
+{0em}
+{\underline} % Text formatting of sections
+
+\titleformat{\subsection}
+[runin]
+{\Large\raggedright\bfseries}
+{}
+{0em}
+{} % Text formatting of sections
+
+\titleformat{\subsubsection}
+{\large\raggedright\bfseries}
+{}
+{0em}
+{\underline} % Text formatting of sections
+
+\titleformat{\paragraph}
+[runin]
+{\normalsize\raggedright\bfseries}
+{}
+{0em}
+{} % Text formatting of sections
+
+\titlespacing{\paragraph}{-13pt}{4pt}{5pt} % this reduces space between (sub)sections to 0pt, for example
+\titlespacing{\subsection}{0pt}{10pt}{5pt} % this reduces space between (sub)sections to 0pt, for example
+\titlespacing{\section}{-15pt}{10pt}{6pt} % this reduces space between (sub)sections to 0pt, for example
+
+%\renewcommand{\itemize}
+%  {\begin{list}
+%    {
+%    \setlength{\leftmargin}{-5mm}
+%    \setlength{\itemindent}{-5mm}
+%    \raggedright
+%    }
+%  }
+%{\end{list}}
+
+$body$
+\end{minipage}
+
+$for(include-after)$
+\newpage
+\fontsize{12pt}{14pt}\selectfont
+
+\titleformat{\section}
+{\Large\center\bfseries}
+{}
+{0em}
+{\underline} % Text formatting of sections
+
+\titleformat{\subsection}
+{\large\center\bfseries}
+{}
+{0em}
+{} % Text formatting of sections
+
+$include-after$
+$endfor$
+%\end{vwcol}
+\end{document}

@@ -1,0 +1,93 @@
+- name: Spidergraph
+  list:
+    - name: DevOps
+      proficiency: 3
+    - name: Linux
+      proficiency: 4
+    - name: Cyber Security
+      proficiency: 1.5
+    - name: Programming
+      proficiency: 5
+    - name: Algorithms
+      proficiency: 2.5
+- name: Programming
+  icon: \faCode
+  list:
+    - name: Python
+      proficiency: 9
+    - name: SQL
+      proficiency: 7
+    - name: D
+      proficiency: 5
+    - name: C/C++
+      proficiency: 3
+    - name: JavaScript
+      proficiency: 2
+    - name: Ruby
+      proficiency: 1
+- name: Technologies
+  icon: \faCogs
+  list:
+    - name: Git
+      proficiency: 6
+    - name: Docker
+      proficiency: 7
+    - name: HTML
+      proficiency: 6
+    - name: CSS
+      proficiency: 4
+    - name: Linux
+      proficiency: 8
+    - name: RabbitMQ
+      proficiency: 6
+- name: Databases
+  icon: \faDatabase
+  list:
+    - name: PostgreSQL
+      proficiency: 7
+    - name: Redis
+      proficiency: 6
+    - name: Supabase
+      proficiency: 6
+    - name: InfluxDB
+      proficiency: 5
+- name: Languages
+  icon: \faLanguage
+  list:
+    - name: Polish (Native)
+      proficiency: 10
+      description: C2
+    - name: English (Fluent)
+      proficiency: 8.5
+      description: C1
+- name: Libraries
+  icon: \faBookOpen
+  cloud:
+    - BeautifulSoup4
+    - aiohttp
+    - SQLAlchemy
+    - dataclasses
+- name: Miscellaneous
+  icon: \faTools
+  cloud:
+    - async
+    - REST API
+    - WebSockets
+    - OSINT
+    - OWASP
+    - SSH
+    - JSON
+    - YAML
+    - Pandoc
+    - LaTeX
+    - VS Code
+    - Bash
+    - nmap
+    - Github Actions
+    - Code Review
+    - Pre-Commit
+    - Ruff
+    - Kanban
+    - Secure Coding
+    - Pytest
+    - CI/CD
