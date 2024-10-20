@@ -87,6 +87,10 @@ def parse_object(
                 if type(object) is dict:
                     if _parser == "certificates":
                         string += parse_certficate(object, level + 1)
+                    elif _parser == "extra":
+                        string += parse_description(object, level + 1)
+                    elif _parser == "education":
+                        string += parse_description(object, level + 1)
                     else:
                         string += make_div(
                             parse_object(object, level=level + 1, section=section)
@@ -113,19 +117,29 @@ class Certificate:
 
     def __str__(self) -> str:
         if self.url:
-            return f"[{self.name}]({self.url})"
-        return f"{self.name}"
+            return f"[**{self.name}**]({self.url})"
+        return f"**{self.name}**"
 
 
 def parse_certficate(object: dict, level: int):
-    header = "\n" + "#" * level + " " + object["organisation"] + r"\hfill\ "
+    header = "\n" + " " + object["organisation"] + r"\hfill\ "
     if len(object["certificates"]) == 1:
         return header + str(Certificate(**object["certificates"][0])) + "\n"
     return (
         header
         + "\n"
-        + "\n".join([f"- {Certificate(**cert)}" for cert in object["certificates"]])
+        + "\n\n".join([f"- {Certificate(**cert)}" for cert in object["certificates"]])
         + "\n"
+    )
+
+
+def parse_description(object: dict, level: int):
+    return (
+        "\n- "
+        + str(Certificate(object["name"], None, url=object.get("link", None)))
+        + (f"\n*{object['date']}*\n\n" if "date" in object else "")
+        + " "
+        + object["description"]
     )
 
 
