@@ -78,14 +78,14 @@
     - SSH
     - JSON
     - YAML
-    - Pandoc
-    - LaTeX
-    - VS Code
+    #- Pandoc
+    #- LaTeX
+    #- VS Code
     - Bash
     - nmap
     - Github Actions
     - Code Review
-    - Pre-Commit
+    #- Pre-Commit
     - Ruff
     - Kanban
     - Secure Coding

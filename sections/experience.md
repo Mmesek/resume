@@ -4,12 +4,12 @@
 ***Backend Developer***
 
 - Designed queues flow & Migrated REST API to RabbitMQ-based communication between inner applications
-- Automated deployment of multi repo app with docker-compose
+- Automated deployment of multi repo app with docker-compose by utilizing Git repos as sources
 - Tested entire stack End to End (E2E)
 - Migrated code to asyncio
-- Improved process of building & starting whole tech stack
+- Improved process of building & starting tech stack composed of multiple components like Message Queue, Backend, Frontend, Database & Processing Unit with setups/teardowns for reproductibility
 - Integrated SQL database
-- Improved unit tests with pytest
+- Wrote unit tests with pytest
 
 ## Bot Development
 \hfill\ *2019/4 - 2024/7*
@@ -20,8 +20,8 @@
 - Created microframework for command creation
 - Designed & Implemented database schema with \inlinetag{RESTful API}
 - Automated \inlinetag{RestAPI} client generation
-- Automated build & deployment with \inlinetag{GitHub Actions} & Webhooks
-- Automated bot detection, spam prevention & moderation
+- Streamlined build & redeployment with \inlinetag{GitHub Actions} & Webhooks
+- Improved detection of bots, spam prevention & automoderation
 - Split monolithic application into smaller applications & libraries
 - \inlinetag{Dockerized} an Application
 - Migrated monorepo into multi-repo

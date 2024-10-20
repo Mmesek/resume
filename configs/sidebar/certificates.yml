@@ -71,7 +71,8 @@
         - Python
 - organisation: FreeCodeCamp
   certificates:
-    - name: Scientific Computing with Python
+    - name: Scientific Computing
+    #with Python
       default: True
       date: 2022
       categories:

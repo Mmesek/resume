@@ -14,6 +14,7 @@ sidebar:
   extra:
     - name: Extra
       icon: \faPuzzlePiece
+      include_parser: extra
       include: sidebar/extra.yml
 main:
   - name: Experience
