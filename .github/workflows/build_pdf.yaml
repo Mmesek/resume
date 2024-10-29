@@ -34,7 +34,7 @@ jobs:
             output/sidebar.md
             -o output/before.tex
             --template templates/subsections.tex
-            --metadata-file meta/main.yaml      
+            --metadata-file output/main.yaml      
 
       - name: Build Main Tex file
         uses: docker://pandoc/extra:edge-ubuntu
@@ -44,7 +44,7 @@ jobs:
             -B output/before.tex
             -o output/out.tex
             --template templates/main.tex
-            --metadata-file meta/main.yaml
+            --metadata-file output/main.yaml
 
       - name: Build PDF
         uses: docker://pandoc/extra:edge-ubuntu
