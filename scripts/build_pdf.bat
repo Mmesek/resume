@@ -12,15 +12,16 @@ RD /S /Q output
 mkdir output
 
 python scripts/generate.py
+python scripts/preprocess_config.py
 
 docker run --rm -v "%cd%:/data" pandoc/minimal:edge output/sidebar.md -o output/sidebar.tex
-docker run --rm -v "%cd%:/data" pandoc/minimal:edge output/before.md -A output/sidebar.tex -o output/sidebar.tex --template=%templates%subsections.tex --metadata-file %meta%main.yaml
+docker run --rm -v "%cd%:/data" pandoc/minimal:edge output/before.md -A output/sidebar.tex -o output/sidebar.tex --template=%templates%subsections.tex --metadata-file output/main.yaml
 docker run --rm -v "%cd%:/data" pandoc/minimal:edge^
     output/main.md ^
     -B output/sidebar.tex ^
     -o output/out.tex ^
     --template=%templates%main.tex ^
-    --metadata-file %meta%main.yaml ^
+    --metadata-file output/main.yaml ^
     --metadata-file %meta%contact.yaml ^
     --metadata-file %meta%legal-pl.yaml
 docker run --rm -v "%cd%:/data" -it --entrypoint bash pandoc/extra:edge-ubuntu scripts/convert_to_pdf.sh

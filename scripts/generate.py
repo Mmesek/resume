@@ -1,37 +1,16 @@
 import os
 import sys
-import yaml
 
 from dataclasses import dataclass
+
+import utils
 
 # NOTE:
 # - Parse certificate
 # - Left/right icon
 # - Dynamic projects fetching through GH API
 
-SECTIONS_DIR = "sections/"
-CONFIG_DIR = "configs/"
-
 USE_HTML = sys.argv[-1] == "--html"
-
-
-def load(filename: str) -> dict:
-    with open(filename, "r", newline="", encoding="utf-8") as file:
-        return yaml.safe_load(file)
-
-
-def read(filename: str) -> str:
-    with open(filename, "r", newline="", encoding="utf-8") as file:
-        return file.read()
-
-
-def save(filename: str, content: str) -> None:
-    print(f"Saving to {filename}")
-    with open("output/" + filename, "w", newline="", encoding="utf-8") as file:
-        file.write(content)
-
-
-objects = load(CONFIG_DIR + "sections.yml")
 
 
 def make_div(string: str) -> str:
@@ -48,7 +27,7 @@ def parse_object(
     spidergraph = False
     for key, value in objects.items():
         if key == "include":
-            value = load(CONFIG_DIR + value)
+            value = utils.load(utils.CONFIG_DIR + value)
 
         if not section and level == 0 and key == "main":
             section = "main"
@@ -68,12 +47,12 @@ def parse_object(
             _parser = value
         elif key == "file":
             if value.endswith("/"):
-                value = os.listdir(SECTIONS_DIR + value)
+                value = os.listdir(utils.SECTIONS_DIR + value)
             if type(value) is not list:
                 value = [value]
 
             for item in value:
-                string += read(SECTIONS_DIR + item) + "\n"
+                string += utils.read(utils.SECTIONS_DIR + item) + "\n"
         elif key == "icon":
             string = string.format(icon=value)
         elif key == "cloud":
@@ -101,7 +80,7 @@ def parse_object(
             string += make_div(parse_object(value, level=level + 1, section=section))
 
         if level == 0:
-            save(key + ".md", string.strip())
+            utils.save(key + ".md", string.strip())
             string = ""
     return string
 
@@ -202,4 +181,5 @@ def make_cloud(items: list[str]) -> str:
     return "- " + " ".join([r"\cloudtag{{i}}".replace("{i}", i) for i in items])
 
 
-print(parse_object(objects))
+if __name__ == "__main__":
+    print(parse_object(utils.load(utils.CONFIG_DIR + "sections.yml")))
