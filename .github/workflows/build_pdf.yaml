@@ -24,7 +24,7 @@ jobs:
         run: python scripts/generate.py
 
       - name: Process config
-        run: python scripts/process_config.py
+        run: python scripts/preprocess_config.py
 
       - name: Build Sidebar Section Tex file
         uses: docker://pandoc/extra:edge-ubuntu
