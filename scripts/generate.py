@@ -166,8 +166,10 @@ def make_list(items: list[str], is_spidergraph: bool = False) -> str:
     for a, b in zip_longest(left, right):
         # for (a, b) in grouper(sorted(new_items, key=lambda x: x.proficiency, reverse=True), 2):
         if (a and a.description) or (b and b.description):
-            grouped.append(a.right())
-            grouped.append(b.right())
+            if a:
+                grouped.append(a.right())
+            if b:
+                grouped.append(b.right())
         elif a and b:
             grouped.append(a.left() + r" \hfill " + b.right())
         else:
