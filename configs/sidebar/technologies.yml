@@ -1,7 +1,7 @@
 - name: Spidergraph
   list:
     - name: DevOps
-      proficiency: 6
+      proficiency: 6.5
     - name: Linux
       proficiency: 8
     - name: Cyber Security
@@ -10,6 +10,10 @@
       proficiency: 10
     - name: Algorithms
       proficiency: 4
+    - name: Data
+      proficiency: 8
+    - name: LLMs & AI
+      proficiency: 5
 - name: Programming
   icon: \faCode
   list:
@@ -24,6 +28,8 @@
     - name: JavaScript
       proficiency: 2
     - name: Ruby
+      proficiency: 1
+    - name: Go
       proficiency: 1
 - name: Technologies
   icon: \faCogs
@@ -40,6 +46,8 @@
       proficiency: 8
     - name: RabbitMQ
       proficiency: 6
+    #- name: Kubernetes (K8s)
+    #  proficiency: 1
 - name: Databases
   icon: \faDatabase
   list:
@@ -53,6 +61,7 @@
       proficiency: 5
 - name: Languages
   icon: \faLanguage
+  columns: 1
   list:
     - name: Polish (Native)
       proficiency: 10
@@ -60,6 +69,9 @@
     - name: English (Fluent)
       proficiency: 8.5
       description: C1
+    - name: Spanish (Basic)
+      proficiency: 1
+      description: A2
 - name: Libraries
   icon: \faBookOpen
   cloud:
@@ -67,6 +79,8 @@
     - aiohttp
     - SQLAlchemy
     - dataclasses
+    - FastAPI
+    - FastHTML
 - name: Miscellaneous
   icon: \faTools
   cloud:
@@ -76,19 +90,26 @@
     - OSINT
     - OWASP
     - SSH
-    - JSON
-    - YAML
+    #- JSON
+    #- YAML
     #- Pandoc
     #- LaTeX
     #- VS Code
-    - Bash
+    #- Bash
     - nmap
     - Github Actions
     - Code Review
     #- Pre-Commit
-    - Ruff
+    #- Ruff
+    - UV
     - Kanban
     - Secure Coding
     - Pytest
     - CI/CD
     - Regex
+    - LLM
+    - OpenAPI
+    - AWS/GCP
+    - AI Agents
+    - Gemini
+    #- Prompt Engineering
