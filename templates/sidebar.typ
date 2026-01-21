@@ -40,6 +40,7 @@
     i += 1
   }
 }
+
 #let familiarity(id, name, rating) = {
   if calc.odd(id) {
     show grid: set align(right)
