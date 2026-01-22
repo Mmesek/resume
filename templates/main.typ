@@ -17,7 +17,7 @@
     meta_data: yaml("../meta/main.yaml"),
     //contact_data: yaml("../meta/contact.yaml"),
     tech_data: yaml("../configs/sidebar/technologies.yml"),
-    //cert_data: yaml("../configs/sidebar/certificates.yml"),
+    cert_data: yaml("../configs/sidebar/certificates.yml"),
     education_data: yaml("../configs/sidebar/education.yml"),
     //extra_data: yaml("../configs/sidebar/extra.yml"),
   ),

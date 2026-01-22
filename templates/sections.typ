@@ -67,7 +67,6 @@
     ))]
     [=== 💻 _ #item.at("role", default: "") _ #h(1fr) #term(item.at("start", default: item.at("date", default: "")), item.at("end", default: ""))]
 
-
     if "description" in item.keys() {
       grid(
         columns: 1fr,
@@ -81,12 +80,9 @@
 #let certs(cert_data) = {
   [== Certifications 📜]
   for org in cert_data {
-    show heading: set align(left)
     [=== #org.organisation]
-    show text: set align(right)
     for item in org.certificates {
-      [==== _ #item.name _]
-      [#item.date]
+      [==== _#if "url" in item { link(item.url)[#item.name] } else { item.name }_]
     }
   }
 }
@@ -99,7 +95,6 @@
     if "date" in item {
       text(9pt)[#item.date]
     }
-    //term(item.at("date", default: ""), "")
     [#item.description]
   }
 }
@@ -115,15 +110,22 @@
   if meta_data.len() > 0 {
     contact(meta_data, contact_data)
   }
+  show: set text(size: 8.5pt)
   show heading: set align(right)
+  show heading: set block(spacing: 0.4em, above: 0.7em, below: 0.5em)
+  show heading.where(level: 3): set align(left)
+  show heading.where(level: 2): set text(size: 12pt)
+  show heading.where(level: 3): set text(size: 10pt)
+  set par(leading: 0.5em)
+
   if tech_data.len() > 0 {
     sidebar.sidebar((), tech_data)
   }
-  if cert_data.len() > 0 {
-    certs(cert_data)
-  }
   if education_data.len() > 0 {
     education(education_data)
+  }
+  if cert_data.len() > 0 {
+    certs(cert_data)
   }
   if extra_data.len() > 0 {
     education(extra_data, name: "Extra 🧩")

@@ -100,7 +100,7 @@
           .cloud
           .enumerate()
           .map(item => {
-            text(item.at(1), size: 1em + item.at(0) * 0.1pt)
+            text(item.at(1), size: 0.7em + item.at(0) * 0.1pt)
           }),
         height: 70pt,
         width: 90pt,
