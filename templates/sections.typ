@@ -1,19 +1,22 @@
 #import "sidebar.typ"
 
-#let primary_colour = rgb("#05408d")
 #let link_colour = rgb("#3d5085")
 
-#let icon(name, shift: 1.5pt) = {
+#let icon2(name, shift: 1.5pt) = {
   box(
     baseline: shift,
     height: 10pt,
-    "icon",
+    name,
   )
   h(3pt)
 }
 
+#let icon(name, icon) = {
+  [name + " " + icon]
+}
+
 #let term(start, end) = {
-  text(9pt)[#icon("calendar") #start - #end #h(1fr) #icon("location")]
+  text(9pt)[#start - #end 📅]
 }
 
 #let styled-link(dest, content) = emph(text(
@@ -54,13 +57,16 @@
   )
 }
 
-#let add_experience(roles, name: "Experience") = {
+#let add_experience(roles, name: "💼 Experience") = {
   [= #name]
 
   for item in roles {
-    [== #item.at("company", default: item.at("name", default: "Unnamed Company"))]
-    [=== _ #item.at("role", default: "") _]
-    term(item.at("start", default: item.at("date", default: "")), item.at("end", default: ""))
+    [== #if "icon" in item { box(image(item.icon, width: 10pt)) } #item.at("company", default: item.at(
+      "name",
+      default: "Unnamed Company",
+    ))]
+    [=== 💻 _ #item.at("role", default: "") _ #h(1fr) #term(item.at("start", default: item.at("date", default: "")), item.at("end", default: ""))]
+
 
     if "description" in item.keys() {
       grid(
@@ -73,7 +79,7 @@
 }
 
 #let certs(cert_data) = {
-  [== Certifications]
+  [== Certifications 📜]
   for org in cert_data {
     show heading: set align(left)
     [=== #org.organisation]
@@ -85,12 +91,15 @@
   }
 }
 
-#let education(education_data, name: "Education") = {
+#let education(education_data, name: "Education 🎓") = {
   [== #name]
   show text: set align(right)
   for item in education_data {
     [=== _ #item.name _]
-    term(item.at("date", default: ""), "")
+    if "date" in item {
+      text(9pt)[#item.date]
+    }
+    //term(item.at("date", default: ""), "")
     [#item.description]
   }
 }
@@ -117,11 +126,18 @@
     education(education_data)
   }
   if extra_data.len() > 0 {
-    education(extra_data, name: "Extra")
+    education(extra_data, name: "Extra 🧩")
   }
 }
 
 #let main(experience_data: (), volunteering_data: ()) = {
+  show heading.where(level: 1): set align(center)
+  show heading.where(level: 1): set text(size: 16pt)
+  show heading.where(level: 2): set text(size: 13pt)
+  show heading.where(level: 3): set text(size: 10pt)
+  show heading: set block(spacing: 0.4em, above: 1em, below: 0.5em)
+  set par(leading: 0.5em)
+
   if experience_data.len() > 0 {
     add_experience(experience_data)
   }

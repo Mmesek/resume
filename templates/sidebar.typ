@@ -89,7 +89,7 @@
       radius: 1.3,
     )
   } else {
-    [== #name]
+    [== #name #section.icon]
 
     if section.keys().contains("list") {
       add_list(section.list, columns: section.at("columns", default: 2))
