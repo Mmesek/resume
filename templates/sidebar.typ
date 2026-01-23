@@ -1,5 +1,6 @@
 #import "spidergraph.typ"
 #import "@preview/cloudy:0.1.1"
+#import "@preview/fontawesome:0.6.0": fa-icon
 
 #let primary_colour = rgb("#05408d")
 #let secondary_colour = rgb("#d39014")
@@ -46,14 +47,14 @@
     show grid: set align(right)
     grid(
       columns: 2,
-      name, add_meter(rating),
+      name + " ", add_meter(rating),
     )
   }
   if calc.even(id) {
     show grid: set align(left)
     grid(
       columns: 2,
-      add_meter(rating), name,
+      add_meter(rating) + " ", name,
     )
   }
 }
@@ -79,8 +80,6 @@
 }
 
 #let add_section(name, section) = {
-  show: set align(right)
-
   if name == "Spidergraph" {
     spidergraph.spidergraph(
       section.list.sorted(key: v => v.proficiency, by: (l, r) => l >= r).map(s => (s.name, s.proficiency / max_rating)),
@@ -89,7 +88,7 @@
       radius: 1.3,
     )
   } else {
-    [== #name #section.icon]
+    [== #name #fa-icon(section.icon)]
 
     if section.keys().contains("list") {
       add_list(section.list, columns: section.at("columns", default: 2))
@@ -109,26 +108,17 @@
   }
 }
 
-#let sidebar(contact, sections) = {
-  set text(8pt)
-  //let icon = icon.with(shift: 2.5pt)
-
-  grid(
-    columns: (1fr, 1fr),
-
-    ..contact.map(service => {
-      /*icon(service.name)
-
-      if "display" in service.keys() {
-        link("b")[#{ service.display }]
-      } else {
-        link("a")
-      }*/
-      [service]
-    })
-  )
-
-  set text(10pt)
+#let sidebar(urls, sections) = {
+  show: set align(right)
+  show: set text(8pt)
+  for service in urls {
+    if service.display != none {
+      link(service.url, service.display) + " "
+    } else {
+      link(service.url, fa-icon(service.icon)) + " "
+    }
+  }
+  show: set text(10pt)
   for (section) in sections {
     add_section(section.name, section)
   }

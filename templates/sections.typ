@@ -1,4 +1,5 @@
 #import "sidebar.typ"
+#import "@preview/fontawesome:0.6.0": fa-icon
 
 #let link_colour = rgb("#3d5085")
 
@@ -24,7 +25,7 @@
   link(dest, content),
 ))
 
-#let contact(meta, contact_details) = {
+#let contact(meta, contact_details, urls) = {
   if (meta.author != "") {
     text(size: 24pt)[#meta.author]
     [\ ]
@@ -33,12 +34,13 @@
   show text: set align(right)
   show text: set text(size: 7pt)
   set par(leading: 0.1em)
-  if (contact_details.email != "") {
-    link("mailto:" + contact_details.email, contact_details.email)
-  }
   grid(
     columns: (1fr, 1fr),
     row-gutter: 2.5pt,
+    "",
+    if (contact_details.email != "") {
+      link("mailto:" + contact_details.email, contact_details.email)
+    },
 
     if (meta.contact != "") {
       link(meta.contact.url, meta.contact.display)
@@ -57,8 +59,8 @@
   )
 }
 
-#let add_experience(roles, name: "💼 Experience") = {
-  [= #name]
+#let add_experience(roles, name: "Experience", icon: fa-icon("suitcase")) = {
+  [= #icon #name]
 
   for item in roles {
     [== #if "icon" in item { box(image(item.icon, width: 10pt)) } #item.at("company", default: item.at(
@@ -78,7 +80,7 @@
 }
 
 #let certs(cert_data) = {
-  [== Certifications 📜]
+  [== Certifications #fa-icon("certificate")]
   for org in cert_data {
     [=== #org.organisation]
     for item in org.certificates {
@@ -87,15 +89,17 @@
   }
 }
 
-#let education(education_data, name: "Education 🎓") = {
-  [== #name]
+#let education(education_data, name: "Education", icon: fa-icon("university")) = {
+  [== #name #icon]
   show text: set align(right)
   for item in education_data {
     [=== _ #item.name _]
     if "date" in item {
       text(9pt)[#item.date]
     }
-    [#item.description]
+    show list: set par(leading: 0.3em)
+    show: set list(marker: "")
+    eval(item.description, mode: "markup")
   }
 }
 
@@ -108,7 +112,7 @@
   extra_data: (),
 ) = {
   if meta_data.len() > 0 {
-    contact(meta_data, contact_data)
+    contact(meta_data, contact_data, meta_data.links)
   }
   show: set text(size: 8.5pt)
   show heading: set align(right)
@@ -119,7 +123,7 @@
   set par(leading: 0.5em)
 
   if tech_data.len() > 0 {
-    sidebar.sidebar((), tech_data)
+    sidebar.sidebar(meta_data.links, tech_data)
   }
   if education_data.len() > 0 {
     education(education_data)
@@ -128,7 +132,7 @@
     certs(cert_data)
   }
   if extra_data.len() > 0 {
-    education(extra_data, name: "Extra 🧩")
+    education(extra_data, name: "Extra", icon: fa-icon("puzzle-piece"))
   }
 }
 
@@ -144,6 +148,6 @@
     add_experience(experience_data)
   }
   if volunteering_data.len() > 0 {
-    add_experience(volunteering_data, name: "Volunteering")
+    add_experience(volunteering_data, name: "Volunteering", icon: fa-icon("hands-helping"))
   }
 }
