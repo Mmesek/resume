@@ -27,7 +27,7 @@
 
 #let contact(meta, contact_details, urls) = {
   if (meta.author != "") {
-    text(size: 24pt)[#meta.author]
+    text(size: 18pt)[#meta.author]
     [\ ]
   }
 
@@ -70,28 +70,41 @@
     [=== 💻 _ #item.at("role", default: "") _ #h(1fr) #term(item.at("start", default: item.at("date", default: "")), item.at("end", default: ""))]
 
     if "description" in item.keys() {
-      grid(
-        columns: 1fr,
-        row-gutter: 2.5pt,
-        eval(item.description, mode: "markup"),
-      )
+      eval(item.description, mode: "markup")
     }
   }
 }
 
 #let certs(cert_data) = {
-  [== Certifications #fa-icon("certificate")]
+  [= Certifications #fa-icon("certificate")]
   for org in cert_data {
-    [=== #org.organisation]
-    for item in org.certificates {
+    grid(
+      columns: 2,
+      column-gutter: 1fr,
+      [=== #org.organisation],
+      [==== _#if "url" in org.certificates.first() { link(org.certificates.first().url)[#org.certificates.first().name] } else { org.certificates.first().name }_],
+    )
+    for item in org.certificates.slice(1) {
       [==== _#if "url" in item { link(item.url)[#item.name] } else { item.name }_]
     }
   }
 }
 
+#let extra(data, name: "Extra", icon: fa-icon("puzzle-piece")) = {
+  [= #name #icon]
+  for item in data {
+    grid(
+      columns: 2,
+      column-gutter: 1fr,
+      [=== #if "link" in item { link(item.link)[#item.name] } else { [#item.name] }],
+      eval(item.description, mode: "markup"),
+    )
+  }
+}
+
 #let education(education_data, name: "Education", icon: fa-icon("university")) = {
-  [== #name #icon]
-  show text: set align(right)
+  [= #name #icon]
+  show list: set align(right)
   for item in education_data {
     [=== _ #item.name _]
     if "date" in item {
@@ -132,7 +145,7 @@
     certs(cert_data)
   }
   if extra_data.len() > 0 {
-    education(extra_data, name: "Extra", icon: fa-icon("puzzle-piece"))
+    extra(extra_data)
   }
 }
 
