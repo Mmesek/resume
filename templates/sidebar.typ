@@ -79,6 +79,10 @@
   )
 }
 
+#let inline_tag(name) = {
+  box(name, stroke: gray.lighten(10%), inset: (x: 0.1pt, y: 0.01pt), outset: (x: 0.5pt, y: 1.3pt), radius: 50%)
+}
+
 #let add_section(name, section) = {
   if name == "Spidergraph" {
     spidergraph.spidergraph(
@@ -93,17 +97,18 @@
     if section.keys().contains("list") {
       add_list(section.list, columns: section.at("columns", default: 2))
     } else if section.keys().contains("cloud") {
+      for item in section.cloud { [#inline_tag(item) ] }
       show: set align(center)
-      cloudy.cloud(
-        section
-          .cloud
-          .enumerate()
-          .map(item => {
-            text(item.at(1), size: 0.7em + item.at(0) * 0.1pt)
-          }),
-        height: 70pt,
-        width: 90pt,
-      )
+      //cloudy.cloud(
+      //  section
+      //    .cloud
+      //    .enumerate()
+      //    .map(((x, item)) => {
+      //      inline_tag(text(item, size: 0.7em + x * 0.1pt))
+      //    }),
+      //  height: 5em,
+      //  width: 10em,
+      //)
     }
   }
 }
@@ -115,7 +120,7 @@
     if service.display != none {
       link(service.url, service.display) + " "
     } else {
-      link(service.url, fa-icon(service.icon)) + " "
+      link(service.url, fa-icon(service.fa_icon)) + " "
     }
   }
   show: set text(10pt)
