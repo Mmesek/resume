@@ -2,43 +2,28 @@
 #import "@preview/cloudy:0.1.1"
 #import "@preview/fontawesome:0.6.0": fa-icon
 
-#let primary_colour = rgb("#05408d")
-#let secondary_colour = rgb("#d39014")
+#let primary_colour = rgb("#0281f8")
+#let secondary_colour = rgb("#4b4b4b")
 
 #let max_rating = 10
+
 #let add_meter(rating) = {
-  let done = false
-  let i = 1
-  while (not done) {
-    let colour = secondary_colour
-    let strokeColor = primary_colour
-    let radiusValue = (left: 0em, right: 0em)
-
-    if (i <= rating) {
-      colour = primary_colour
-      strokeColor = primary_colour
-    }
-
-    // Add rounded corners for the first and last boxes
-    if (i == 1) {
-      radiusValue = (left: 2em, right: 0em)
-    } else if (i == max_rating) {
-      radiusValue = (left: 0em, right: 2em)
-    }
-
-    box(rect(
-      height: 0.5em,
-      width: 2pt,
-      stroke: strokeColor,
-      fill: colour,
-      radius: radiusValue,
-    ))
-
-    if (max_rating == i) {
-      done = true
-    }
-
-    i += 1
+  for i in range(1, max_rating + 1) {
+    box(
+      rect(
+        height: 0.65em,
+        width: 2pt,
+        stroke: (
+          y: if i <= rating { primary_colour } else { secondary_colour },
+          x: if i <= rating { primary_colour } else { secondary_colour },
+        ),
+        fill: if i <= rating { primary_colour } else { secondary_colour },
+        radius: (
+          left: if i == 1 { 2em } else { 0em },
+          right: if i == max_rating { 2em } else { 0em },
+        ),
+      ),
+    )
   }
 }
 
@@ -116,6 +101,7 @@
 #let sidebar(urls, sections) = {
   show: set align(right)
   show: set text(8pt)
+  [Links: ]
   for service in urls {
     if service.display != none {
       link(service.url, service.display) + " "
