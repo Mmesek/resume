@@ -33,7 +33,7 @@
 
   show text: set align(right)
   show text: set text(size: 7pt)
-  set par(leading: 0.1em)
+  set par(leading: 0.1em, spacing: 0.2em)
   grid(
     columns: (1fr, 1fr),
     row-gutter: 2.5pt,
@@ -133,7 +133,8 @@
   show heading.where(level: 3): set align(left)
   show heading.where(level: 2): set text(size: 12pt)
   show heading.where(level: 3): set text(size: 10pt)
-  set par(leading: 0.5em)
+  show heading.where(level: 2): underline
+  set par(leading: 0.5em, spacing: 0.5em)
 
   if tech_data.len() > 0 {
     sidebar.sidebar(meta_data.links, tech_data)
