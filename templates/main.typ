@@ -2,9 +2,12 @@
 
 #set page(paper: "a4", margin: (x: 0.5cm, y: 0.5cm))
 #set text(font: "Roboto")
+#let author = sys.inputs.at("author", default: "Author")
+
 #set document(
-  title: "'s CV",
-  author: "Mms",
+  title: author + " Resume",
+  author: author,
+  date: datetime.today(),
 )
 
 #show link: set text(fill: blue, weight: 700)

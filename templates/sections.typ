@@ -26,8 +26,10 @@
 ))
 
 #let contact(meta, contact_details, urls) = {
-  if (meta.author != "") {
-    text(size: 18pt)[#meta.author]
+  let author = sys.inputs.at("author", default: "Author")
+
+  if (author != "") {
+    text(size: 18pt)[#author]
     [\ ]
   }
 
