@@ -1,0 +1,44 @@
+name: Render PDF
+
+on:
+  workflow_dispatch:
+  release:
+    types: [push]
+
+  push:
+    branches: [main, gh_pages]
+
+permissions:
+  contents: write
+
+jobs:
+  render-paper:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Roboto Font
+        run: |
+          wget -O font.zip https://fonts.google.com/download?family=Roboto
+          unzip -d /usr/share/fonts/roboto font.zip
+          fc-cache -fv
+      - name: Install FontAwesome
+        run: |
+          wget -O font.zip https://use.fontawesome.com/releases/v7.1.0/fontawesome-free-7.1.0-desktop.zip
+          unzip -d /usr/share/fonts/fa font.zip
+          fc-cache -fv
+      - uses: actions/checkout@v4
+      - uses: typst-community/setup-typst@v4
+      - run: typst
+        with:
+          args: >-
+            compile templates/main.typ resume/Resume.pdf
+            --input author=Mmesek
+            --input sections=../configs/sections.yml
+            --input meta=../meta/main.yaml
+            --input contact=../meta/contact.yaml
+            --root=..
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: resume
+          folder: resume
