@@ -39,29 +39,29 @@
     row-gutter: 2.5pt,
     "",
     if (contact_details.email != "") {
-      link("mailto:" + contact_details.email, contact_details.email)
+      link("mailto:" + contact_details.email, contact_details.email) + fa-icon("inbox")
     },
 
     if (meta.contact != "") {
-      link(meta.contact.url, meta.contact.display)
+      fa-icon(meta.contact.fa_icon) + link(meta.contact.url, meta.contact.display)
     },
     if (contact_details.phone != "") {
-      contact_details.phone + " 📞"
+      contact_details.phone + " " + fa-icon("phone")
     },
 
     if (meta.timezone != "") {
-      "🕒 " + meta.timezone
+      fa-icon("clock") + " " + meta.timezone
     },
 
     if (meta.location != "") {
-      meta.location + " 🗺️"
+      meta.location + " " + fa-icon("map")
     },
   )
 
   sidebar.links(meta.links)
 }
 
-#let add_experience(roles, name: "Experience", icon: "") = {
+#let add_experience(roles, name: "Experience", icon: "suitcase") = {
   [= #fa-icon(icon) #name]
 
   for item in roles {
