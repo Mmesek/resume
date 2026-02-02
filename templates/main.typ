@@ -19,7 +19,7 @@
 
 #let meta_data = yaml(sys.inputs.at("meta", default: "../meta/main.yaml"))
 #let contact_data = {
-  if sys.inputs.at("contact", default: false) {
+  if sys.inputs.at("contact", default: "") != "" {
     yaml(sys.inputs.at("contact", default: "../meta/contact.yaml"))
   } else { ("email": "", "phone": "") }
 }
