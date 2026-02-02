@@ -25,15 +25,13 @@
   link(dest, content),
 ))
 
-#let contact(meta, contact_details, urls) = {
-  let author = sys.inputs.at("author", default: "Author")
-
+#let contact(meta, contact_details, author) = {
   if (author != "") {
     text(size: 18pt)[#author]
     [\ ]
   }
 
-  show text: set align(right)
+  show: set align(right)
   show text: set text(size: 7pt)
   set par(leading: 0.1em, spacing: 0.2em)
   grid(
@@ -59,10 +57,12 @@
       meta.location + " 🗺️"
     },
   )
+
+  sidebar.links(meta.links)
 }
 
-#let add_experience(roles, name: "Experience", icon: fa-icon("suitcase")) = {
-  [= #icon #name]
+#let add_experience(roles, name: "Experience", icon: "") = {
+  [= #fa-icon(icon) #name]
 
   for item in roles {
     [== #if "icon" in item { box(image(item.icon, width: 10pt)) } #item.at("company", default: item.at(
@@ -77,8 +77,8 @@
   }
 }
 
-#let certs(cert_data) = {
-  [= Certifications #fa-icon("certificate")]
+#let certs(cert_data, name: "Certificates", icon: "certificate") = {
+  [= #name #fa-icon(icon)]
   for org in cert_data {
     grid(
       columns: 2,
@@ -92,8 +92,8 @@
   }
 }
 
-#let extra(data, name: "Extra", icon: fa-icon("puzzle-piece")) = {
-  [= #name #icon]
+#let extra(data, name: "Extra", icon: "puzzle-piece") = {
+  [= #name #fa-icon(icon)]
   for item in data {
     grid(
       columns: 2,
@@ -104,8 +104,8 @@
   }
 }
 
-#let education(education_data, name: "Education", icon: fa-icon("university")) = {
-  [= #name #icon]
+#let education(education_data, name: "Education", icon: "university") = {
+  [= #name #fa-icon(icon)]
   show list: set align(right)
   for item in education_data {
     [=== _ #item.name _]
@@ -118,17 +118,7 @@
   }
 }
 
-#let side(
-  meta_data: (),
-  contact_data: ("email": "", "phone": ""),
-  tech_data: (),
-  cert_data: (),
-  education_data: (),
-  extra_data: (),
-) = {
-  if meta_data.len() > 0 {
-    contact(meta_data, contact_data, meta_data.links)
-  }
+#let side(sections) = {
   show: set text(size: 8.5pt)
   show heading: set align(right)
   show heading: set block(spacing: 0.4em, above: 0.7em, below: 0.5em)
@@ -138,21 +128,28 @@
   show heading.where(level: 2): underline
   set par(leading: 0.5em, spacing: 0.5em)
 
-  if tech_data.len() > 0 {
-    sidebar.sidebar(meta_data.links, tech_data)
-  }
-  if education_data.len() > 0 {
-    education(education_data)
-  }
-  if cert_data.len() > 0 {
-    certs(cert_data)
-  }
-  if extra_data.len() > 0 {
-    extra(extra_data)
+  for section in sections.sidebar {
+    if "include_parser" in section.keys() {
+      let func = (file, name: "", icon: "") => {}
+      if section.include_parser == "education" {
+        func = education
+      } else if section.include_parser == "certificates" {
+        func = certs
+      } else if section.include_parser == "extra" {
+        func = extra
+      } else if section.include_parser == "skill_list" {
+        sidebar.sidebar(yaml(section.include))
+      }
+      func(
+        yaml(section.include),
+        icon: section.at("icon", default: ""),
+        name: section.at("name", default: ""),
+      )
+    }
   }
 }
 
-#let main(experience_data: (), volunteering_data: ()) = {
+#let main(sections) = {
   show heading.where(level: 1): set align(center)
   show heading.where(level: 1): set text(size: 16pt)
   show heading.where(level: 2): set text(size: 13pt)
@@ -160,10 +157,9 @@
   show heading: set block(spacing: 0.4em, above: 1em, below: 0.5em)
   set par(leading: 0.5em)
 
-  if experience_data.len() > 0 {
-    add_experience(experience_data)
-  }
-  if volunteering_data.len() > 0 {
-    add_experience(volunteering_data, name: "Volunteering", icon: fa-icon("hands-helping"))
+  for section in sections.main {
+    if section.len() > 0 {
+      add_experience(yaml(section.file), name: section.name, icon: section.icon)
+    }
   }
 }
