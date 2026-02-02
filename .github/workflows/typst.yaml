@@ -20,21 +20,23 @@ jobs:
           wget -O font.zip https://fonts.google.com/download?family=Roboto
           unzip -d /usr/share/fonts/roboto font.zip
           fc-cache -fv
+
       - name: Install FontAwesome
         run: |
           wget -O font.zip https://use.fontawesome.com/releases/v7.1.0/fontawesome-free-7.1.0-desktop.zip
           unzip -d /usr/share/fonts/fa font.zip
           fc-cache -fv
+
       - uses: actions/checkout@v4
+
       - uses: typst-community/setup-typst@v4
-      - run: typst
-        with:
-          args: >-
-            compile templates/main.typ resume/Resume.pdf
-            --input author=Mmesek
-            --input sections=../configs/sections.yml
-            --input meta=../meta/main.yaml
-            --input contact=../meta/contact.yaml
+      - run: |
+          typst \
+            compile templates/main.typ resume/Resume.pdf \
+            --input author=Mmesek \
+            --input sections=../configs/sections.yml \
+            --input meta=../meta/main.yaml \
+            --input contact=../meta/contact.yaml \
             --root=..
 
       - name: Deploy
