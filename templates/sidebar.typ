@@ -98,8 +98,7 @@
   }
 }
 
-#let sidebar(urls, sections) = {
-  show: set align(right)
+#let links(urls) = {
   show: set text(8pt)
   [Links: ]
   for service in urls {
@@ -109,6 +108,10 @@
       link(service.url, fa-icon(service.fa_icon)) + " "
     }
   }
+}
+
+#let sidebar(sections) = {
+  show: set align(right)
   show: set text(10pt)
   for (section) in sections {
     add_section(section.name, section)
