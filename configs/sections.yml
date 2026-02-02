@@ -1,31 +1,26 @@
-before:
-  include: sidebar/technologies.yml
-  include_parser: skill_list
 sidebar:
-  education:
-    - name: Education
-      icon: \faUniversity
-      include_parser: education
-      include: sidebar/education.yml
-    - name: Certificates
-      icon: \faCertificate
-      include_parser: certificates
-      include: sidebar/certificates.yml
-  extra:
-    - name: Extra
-      icon: \faPuzzlePiece
-      include_parser: extra
-      include: sidebar/extra.yml
+  - include: ../configs/sidebar/technologies.yml
+    include_parser: skill_list
+  - name: Education
+    icon: university
+    include_parser: education
+    include: ../configs/sidebar/education.yml
+  - name: Certificates
+    icon: certificate
+    include_parser: certificates
+    include: ../configs/sidebar/certificates.yml
+#  - name: Extra
+#    icon: puzzle-piece
+#    include_parser: extra
+#    include: ../configs/sidebar/extra.yml
 main:
   - name: Experience
-    icon: \faSuitcase
-    file: experience.md
-# after:
+    icon: suitcase
+    file: ../configs/experience.yml
+#  - name: Volunteering
+#    icon: hand-sparkles
+#    file: ../configs/after/volunteering.yml
 #   - name: Projects
 #     icon: \faProjectDiagram
 #     include_parser: projects
 #     include: after/projects.yml
-#   - name: Volunteering & Community
-#     icon: \faHandSparkles
-#     include_parser: experience
-#     include: after/volunteering.yml

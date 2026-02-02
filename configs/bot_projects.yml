@@ -27,8 +27,8 @@ projects:
   - name: Discord API Wrapper
     url: https://github.com/Mmesek/mdiscord
     description: |
-Websocket client with event dispatcher & type validator.
-Partially generated using Code Generator below.
+      Websocket client with event dispatcher & type validator.
+      Partially generated using Code Generator below.
     stats: ~9.2k LoC / ~140 commits
     years: 2020 - 2021
     technologies: 

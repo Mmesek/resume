@@ -15,7 +15,7 @@
     - name: LLMs & AI
       proficiency: 5
 - name: Programming
-  icon: \faCode
+  icon: code
   list:
     - name: Python
       proficiency: 9
@@ -32,7 +32,7 @@
     - name: Go
       proficiency: 1
 - name: Technologies
-  icon: \faCogs
+  icon: cogs
   list:
     - name: Git
       proficiency: 6
@@ -49,7 +49,7 @@
     #- name: Kubernetes (K8s)
     #  proficiency: 1
 - name: Databases
-  icon: \faDatabase
+  icon: database
   list:
     - name: PostgreSQL
       proficiency: 7
@@ -60,7 +60,7 @@
     - name: InfluxDB
       proficiency: 5
 - name: Languages
-  icon: \faLanguage
+  icon: language
   columns: 1
   list:
     - name: Polish (Native)
@@ -73,7 +73,7 @@
       proficiency: 1
       description: A2
 - name: Libraries
-  icon: \faBookOpen
+  icon: book-open
   cloud:
     - BeautifulSoup4
     - aiohttp
@@ -82,7 +82,7 @@
     - FastAPI
     - FastHTML
 - name: Miscellaneous
-  icon: \faTools
+  icon: tools
   cloud:
     - async
     - REST API
@@ -108,7 +108,7 @@
     - CI/CD
     - Regex
     - LLM
-    - OpenAPI
+    - OpenAI
     - AWS/GCP
     - AI Agents
     - Gemini

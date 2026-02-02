@@ -1,4 +1,5 @@
 - company: Atomic IT
+  icon: ../atomicit.svg
   start: 2025/6
   end: Present
   role: Python Team Lead
@@ -6,8 +7,9 @@
     - Created pipeline for creating Python microservices for ERP system
     - Facilitated meetings with Clients & Planned tailored solutions
     - Improved project management & Consulted on solution deployment strategies
-    - Set up a team of `AI Agents`
+    - Set up a team of `AI Agents` to improve usage of `LLM`s for code generation
 - company: Event Organization
+  icon: ../tavern.png
   start: 2025/5
   end: 2025/11
   role: Developer
@@ -15,8 +17,9 @@
     - Organized local live events with ARG mechanics, puzzles, story & in-house tech solutions
     - Created #link("https://github.com/Mmesek/Audio-Transcriber")[tool] for transcribing audio files with `whisper`
     - Developed #link("https://github.com/Mmesek/mEvents")[website] for event listing & attendees management with `FastHTML`
-    - Created AI #link("https://github.com/Mmesek/mUSh")[pipeline] of song processing for karaoke software
+    - Engineered AI #link("https://github.com/Mmesek/mUSh")[pipeline] of song processing for karaoke software
 - company: xBerry
+  icon: ../xberry.svg
   start: 2024/2
   end: 2024/4
   role: Backend Developer
@@ -26,6 +29,7 @@
     - Tested entire stack End to End (`E2E`) & Wrote unit tests with `pytest`
     - Migrated code to `asyncio` & Integrated `SQL` database
 - company: Bot Development
+  icon: ../discord.svg
   start: 2019/4
   end: 2024/7
   role: Python Developer
@@ -34,13 +38,14 @@
     - Created #link("https://github.com/Mmesek/MFramework.py")[microframework] for command creation
     - Automated `RestAPI` client #link("https://github.com/Mmesek/DocParser")[generation]
     - Streamlined `CI/CD` with `GitHub Actions` & Webhooks
-    - Split monolithic application into smaller applications & libraries & Designed microservice architecture plan
+    - Split monolithic application into smaller applications, libraries & Designed microservice architecture plan
     - Containerized application with `Docker` & Reduced image size by 45%
     - Provided live-service, support & managed hosting for multiple clients serving 100s of active users
-    - Designed & Implemented database schema for #link("https://github.com/Mmesek/ItemsAPI")[Inventory Management System] with `RESTful API` for both dev UX & data storage by utilizing `Supabase`
+    - Designed & Implemented `SQL` database schema for #link("https://github.com/Mmesek/ItemsAPI")[Inventory Management System] with `RESTful API` for both dev UX & data storage by utilizing `Supabase`
 - company: Techland
-  start: 2020
-  end: 2023
+  icon: ../techland.svg
+  start: 2020/1
+  end: 2023/11
   role: Discord Administrator, Event Manager
   description: |
     - Improved detection of bots, spam prevention & automoderation
@@ -50,11 +55,12 @@
     - Hosted over 15 events with 8 unique handcrafted minigames
     - Developed Modmail Bot & Gathered community feedback
 - company: Freelance
-  start: 2018
+  icon: ../avroundbg.png
+  start: 2018/9
   end: Present
   role: Developer, Community Manager
   description: |
     - Mentored 4 people learning `Python`
-    - Set-up, Configured & helped manage multiple Discord servers from small (~100) to big (~100k)
-    - Programmed pipeline for visualizing travel datasets
+    - Set-up, Configured & helped manage multiple Discord servers from small (\~100) to big (\~100k)
+    - Programmed ETL pipeline for visualizing travel datasets
     - Collaborated with cross-functional teams to identify areas for automation and implemented tailored solutions to meet business needs

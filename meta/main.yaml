@@ -3,15 +3,16 @@ author: Mms
 lang: en-GB
 date: 2022
 thanks: Mmesek
-website: mmesek.github.io
-location: Poznań / Lublin, Poland
-timezone: Europe/Warsaw
-sidebar_footer: "*Counters represents Confidence"
+location: Lublin, Poland
+timezone: Europe/Warsaw UTC+2
 contact:
   display: "@mmesek:matrix.org"
   url: https://matrix.to/#/@mmesek:matrix.org
   fa_icon: address-book
 links:
+  - display:
+    url: mmesek.github.io
+    fa_icon: globe
   - display: 
     url: https://github.com/Mmesek
     fa_icon: github
