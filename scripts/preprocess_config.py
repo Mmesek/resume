@@ -7,7 +7,7 @@ import utils
 
 def parse_timezone(tz: str):
     sign = ""
-    dt = datetime.now(pytz.timezone(tz))
+    dt = datetime.now(pytz.timezone(tz.split(" ", 1)[0]))
     if (offset := dt.utcoffset().total_seconds()) > 0:
         sign = "+"
 
@@ -16,7 +16,7 @@ def parse_timezone(tz: str):
 
 def convert(cfg: dict[str, str]) -> None:
     if tz := cfg.get("timezone", None):
-        cfg["timezone"] = parse_timezone(tz)
+        cfg["timezone"] = parse_timezone(tz.split(" ", 1)[0])
     utils.dump(utils.OUTPUT_DIR + "main.yaml", cfg)
 
 
