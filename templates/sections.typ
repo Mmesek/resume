@@ -17,7 +17,7 @@
 }
 
 #let term(start, end) = {
-  text(9pt)[#start - #end 📅]
+  text(9pt)[#start #if end != "" { "- " + end } 📅]
 }
 
 #let styled-link(dest, content) = emph(text(
@@ -69,7 +69,10 @@
       "name",
       default: "Unnamed Company",
     ))]
-    [=== 💻 _ #item.at("role", default: "") _ #h(1fr) #term(item.at("start", default: item.at("date", default: "")), item.at("end", default: ""))]
+    [=== #if "role" in item { "💻 " + emph(item.at("role", default: "")) } #h(1fr) #term(
+      item.at("start", default: item.at("date", default: "")),
+      item.at("end", default: ""),
+    )]
 
     if "description" in item.keys() {
       eval(item.description, mode: "markup")
