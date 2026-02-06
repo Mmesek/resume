@@ -15,11 +15,9 @@ jobs:
   render-paper:
     runs-on: ubuntu-latest
     steps:
-      - name: Install Roboto Font
-        run: |
-          wget -O font.zip https://fonts.google.com/download?family=Roboto
-          unzip -d /usr/share/fonts/roboto font.zip
-          fc-cache -fv
+      - uses: jim60105/action-install-google-fonts@v2
+        with:
+          fonts: 'Roboto'
 
       - name: Install FontAwesome
         run: |
