@@ -1,5 +1,5 @@
 - company: Atomic IT
-  icon: ../atomicit.svg
+  #icon: ../atomicit.svg
   start: 2025/6
   end: Present
   role: Python Team Lead
@@ -9,7 +9,7 @@
     - Improved project management & Consulted on solution deployment strategies
     - Set up a team of `AI Agents` to improve usage of `LLM`s for code generation
 - company: Event Organization
-  icon: ../tavern.png
+  #icon: ../tavern.png
   start: 2025/5
   end: 2025/11
   role: Developer
@@ -19,7 +19,7 @@
     - Developed #link("https://github.com/Mmesek/mEvents")[website] for event listing & attendees management with `FastHTML`
     - Engineered AI #link("https://github.com/Mmesek/mUSh")[pipeline] of song processing for karaoke software
 - company: xBerry
-  icon: ../xberry.svg
+  #icon: ../xberry.svg
   start: 2024/2
   end: 2024/4
   role: Backend Developer
@@ -29,7 +29,7 @@
     - Tested entire stack End to End (`E2E`) & Wrote unit tests with `pytest`
     - Migrated code to `asyncio` & Integrated `SQL` database
 - company: Bot Development
-  icon: ../discord.svg
+  #icon: ../discord.svg
   start: 2019/4
   end: 2024/7
   role: Python Developer
@@ -43,7 +43,7 @@
     - Provided live-service, support & managed hosting for multiple clients serving 100s of active users
     - Designed & Implemented `SQL` database schema for #link("https://github.com/Mmesek/ItemsAPI")[Inventory Management System] with `RESTful API` for both dev UX & data storage by utilizing `Supabase`
 - company: Techland
-  icon: ../techland.svg
+  #icon: ../techland.svg
   start: 2020/1
   end: 2023/11
   role: Discord Administrator, Event Manager
@@ -55,7 +55,7 @@
     - Hosted over 15 events with 8 unique handcrafted minigames
     - Developed Modmail Bot & Gathered community feedback
 - company: Freelance
-  icon: ../avroundbg.png
+  #icon: ../avroundbg.png
   start: 2018/9
   end: Present
   role: Developer, Community Manager
