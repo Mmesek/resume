@@ -34,7 +34,7 @@ jobs:
             --input author=Mmesek \
             --input sections=../configs/sections.yml \
             --input meta=../meta/main.yaml \
-            --input contact=../meta/contact.yaml \
+            --input contact= \
             --root=..
 
       - name: Deploy
