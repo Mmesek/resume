@@ -27,6 +27,8 @@ jobs:
 
       - uses: actions/checkout@v4
 
+      - run: mkdir resume
+
       - uses: typst-community/setup-typst@v4
       - run: |
           typst \
