@@ -30,7 +30,6 @@ jobs:
         uses: docker://pandoc/extra:edge-ubuntu
         with:
           args: >-
-            output/before.md
             output/sidebar.md
             -o output/before.tex
             --template templates/subsections.tex
