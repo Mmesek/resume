@@ -15,9 +15,9 @@
   role: Developer
   description: |
     - Organized local live events with ARG mechanics, puzzles, story & in-house tech solutions
-    - Created #link("https://github.com/Mmesek/Audio-Transcriber")[tool] for transcribing audio files with `whisper`
-    - Developed #link("https://github.com/Mmesek/mEvents")[website] for event listing & attendees management with `FastHTML`
-    - Engineered AI #link("https://github.com/Mmesek/mUSh")[pipeline] of song processing for karaoke software
+    - Created [tool](https://github.com/Mmesek/Audio-Transcriber) for transcribing audio files with `whisper`
+    - Developed [website](https://github.com/Mmesek/mEvents) for event listing & attendees management with `FastHTML`
+    - Engineered AI [pipeline](https://github.com/Mmesek/mUSh) of song processing for karaoke software
 - company: xBerry
   #icon: ../xberry.svg
   start: 2024/2
@@ -34,14 +34,14 @@
   end: 2024/7
   role: Python Developer
   description: |
-    - Built extendable #link("https://github.com/Mmesek/MBot.py")[system] for automation, moderation & engagement development for chat application
-    - Created #link("https://github.com/Mmesek/MFramework.py")[microframework] for command creation
-    - Automated `RestAPI` client #link("https://github.com/Mmesek/DocParser")[generation]
+    - Built extendable [system](https://github.com/Mmesek/MBot.py) for automation, moderation & engagement development for chat application
+    - Created [microframework](https://github.com/Mmesek/MFramework.py) for command creation
+    - Automated `RestAPI` client [generation](https://github.com/Mmesek/DocParser)
     - Streamlined `CI/CD` with `GitHub Actions` & Webhooks
     - Split monolithic application into smaller applications, libraries & Designed microservice architecture plan
     - Containerized application with `Docker` & Reduced image size by 45%
     - Provided live-service, support & managed hosting for multiple clients serving 100s of active users
-    - Designed & Implemented `SQL` database schema for #link("https://github.com/Mmesek/ItemsAPI")[Inventory Management System] with `RESTful API` for both dev UX & data storage by utilizing `Supabase`
+    - Designed & Implemented `SQL` database schema for [Inventory Management System](https://github.com/Mmesek/ItemsAPI) with `RESTful API` for both dev UX & data storage by utilizing `Supabase`
 - company: Techland
   #icon: ../techland.svg
   start: 2020/1

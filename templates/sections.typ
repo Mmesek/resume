@@ -1,5 +1,6 @@
 #import "sidebar.typ"
 #import "@preview/fontawesome:0.6.0": fa-icon
+#import "@preview/cmarker:0.1.6"
 
 #let link_colour = rgb("#3d5085")
 
@@ -75,7 +76,7 @@
     )]
 
     if "description" in item.keys() {
-      eval(item.description, mode: "markup")
+      cmarker.render(item.description)
     }
   }
 }
