@@ -11,7 +11,7 @@ contact:
   fa_icon: address-book
 links:
   - display:
-    url: mmesek.github.io
+    url: https://mmesek.github.io
     fa_icon: globe
   - display: 
     url: https://github.com/Mmesek
