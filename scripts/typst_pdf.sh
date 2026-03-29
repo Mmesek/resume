@@ -29,8 +29,8 @@ $ENGINE run --rm -it \
     $IMAGE \
     compile \
     $templates/main.typ \
-    $NAME.pdf \
-    --input author=$NAME \
+    "$NAME.pdf" \
+    --input author="$NAME" \
     --input sections=../$config/sections.yml \
     --input meta=../$meta/main.yaml \
     --input contact=../$meta/contact.yaml \
