@@ -81,6 +81,7 @@
     - dataclasses
     - FastAPI
     - FastHTML
+    - msgspec
 - name: Miscellaneous
   icon: tools
   cloud:
@@ -112,4 +113,5 @@
     - AWS/GCP
     - AI Agents
     - Gemini
+    - Typst
     #- Prompt Engineering
