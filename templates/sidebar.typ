@@ -65,7 +65,7 @@
 }
 
 #let inline_tag(name) = {
-  box(name, stroke: gray.lighten(10%), inset: (x: 0.1pt, y: 0.01pt), outset: (x: 0.5pt, y: 1.3pt), radius: 50%)
+  box(name, stroke: gray.lighten(10%), inset: (x: 0.1pt, y: 0.01pt), outset: (x: 0.5pt, y: 2pt), radius: 40%)
 }
 
 #let add_section(name, section) = {
@@ -73,7 +73,7 @@
     spidergraph.spidergraph(
       section.list.sorted(key: v => v.proficiency, by: (l, r) => l >= r).map(s => (s.name, s.proficiency / max_rating)),
       fill: blue.transparentize(50%),
-      stroke: blue.transparentize(90%),
+      stroke: orange.transparentize(70%),
       radius: 1.3,
     )
   } else {
@@ -82,6 +82,7 @@
     if section.keys().contains("list") {
       add_list(section.list, columns: section.at("columns", default: 2))
     } else if section.keys().contains("cloud") {
+      show text: set text(size: 8pt)
       for item in section.cloud { [#inline_tag(item) ] }
       show: set align(center)
       //cloudy.cloud(

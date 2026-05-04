@@ -76,6 +76,7 @@
     )]
 
     if "description" in item.keys() {
+      show raw: x => sidebar.inline_tag(x)
       cmarker.render(item.description)
     }
   }
@@ -114,10 +115,12 @@
   for item in education_data {
     [=== _ #item.name _]
     if "date" in item {
-      text(9pt)[#item.date]
+      text(8pt)[#item.date]
     }
     show list: set par(leading: 0.3em)
     show: set list(marker: "")
+    show: set align(right)
+    show list.item: x => box(x) + " -" + [\ ]
     eval(item.description, mode: "markup")
   }
 }
@@ -128,7 +131,7 @@
   show heading: set block(spacing: 0.4em, above: 0.7em, below: 0.5em)
   show heading.where(level: 3): set align(left)
   show heading.where(level: 2): set text(size: 12pt)
-  show heading.where(level: 3): set text(size: 10pt)
+  show heading.where(level: 3): set text(size: 9pt)
   show heading.where(level: 2): underline
   set par(leading: 0.5em, spacing: 0.5em)
 

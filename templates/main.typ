@@ -1,7 +1,7 @@
 #import "sections.typ"
 #import "sidebar.typ"
 
-#set page(paper: "a4", margin: (x: 0.5cm, y: 0.5cm))
+#set page(paper: "a4", margin: (x: 0.5cm, y: 0.2cm))
 #set text(font: "Roboto")
 
 #let author = sys.inputs.at("author", default: "")
